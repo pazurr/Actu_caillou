@@ -148,8 +148,7 @@ function getData() {
     articleComplet.classList.remove('articleComplet');
   }
   
- 
-  function aficher1(data){
+    function aficher1(data){
     let articleComplet = document.getElementById('articleComplet')
     let titleACTU = data.magazine.article[1].titre;
     let dateACTU = data.magazine.article[1].date;
