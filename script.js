@@ -26,7 +26,7 @@ function getData() {
 
         detruire.addEventListener("click",() => destroy(blur));
 
-        for (let i = 0; i < data.magazine.article.length; i++) {
+        for(let i = 0; i < data.magazine.article.length; i++) {
           let btnACTu = document.getElementById(`${i}`);
 
           btnACTu.addEventListener("click", function() {
