@@ -218,4 +218,31 @@ getData();
         window.history.pushState({}, '', `?id=articlePrincipal`);
   }
 
+  const header = document.querySelector("nav");
+  let lastScrollTop = document.documentElement.scrollTop;
+  let throttleTimeout = null;
+  
+  document.addEventListener("scroll", () => {
+    if (!throttleTimeout) {
+      throttleTimeout = setTimeout(() => {
+        handleSwipeIn();
+        throttleTimeout = null;
+      }, 200);
+    }
+  });
+  
+  function handleSwipeIn() {
+    const currentScroll = document.documentElement.scrollTop;
+  
+    if (currentScroll > lastScrollTop) {
+      // Scrolling down
+      header.classList.add("hidden");
+    } else {
+      // Scrolling up
+      header.classList.remove("hidden");
+    }
+  
+    lastScrollTop = currentScroll;
+  }
+  
 
