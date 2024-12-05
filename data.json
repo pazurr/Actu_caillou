@@ -67,7 +67,15 @@
           "image": "https://www.reunion.fr/app/uploads/crt-reunion/2020/04/thumbs/volcan200_eruption_piton_de_la_fournaise_05_2015_-_credit_irt_-_luc_perrot_dts_06_2021-1920x960.jpg",
           "petite_description": "Explorez l'impact des volcans sur la Terre et découvrez comment ils façonnent les paysages.",
           "longue_description": "Les volcans, ces puissants phénomènes géologiques, sont responsables de la création de certaines des plus grandes merveilles naturelles de notre planète. Depuis les cônes majestueux qui éruptent en déversant lave et cendres jusqu'aux caldeiras géantes laissées par d'anciennes éruptions, les volcans ont joué un rôle fondamental dans la formation des paysages terrestres. Chaque éruption forge des montagnes, des îles et des vallées, en modifiant de manière spectaculaire l’environnement. Dans cet article, nous explorerons les différents types de volcans, les mécanismes de leur activité, ainsi que les effets qu’ils ont sur l’atmosphère, le climat et la vie sur Terre. Un voyage fascinant dans le cœur de la Terre, là où la chaleur rencontre la surface."
-        } 
+        },
+        {
+          "titre": "Les cailloux : leurs rôles dans la nature et leur symbolique",
+          "date": "05 Décembre 2024",
+          "theme": "Nature",
+          "image": "https://www.visitmons.be/sites/visitmons/files/styles/gallery_lightbox/public/content/images/caillouquibique11-rludivinefasseu.jpg?itok=lJeCsNQh",
+          "petite_description": "Plongez dans le monde fascinant des cailloux et découvrez leur importance dans nos écosystèmes et nos cultures.",
+          "longue_description": "Les cailloux ne sont pas seulement des morceaux de roche inertes ; ils jouent un rôle crucial dans nos écosystèmes. Que ce soit en stabilisant les sols, en créant des habitats pour des micro-organismes ou en étant utilisés par les animaux pour leurs activités, ces petits objets naturels sont indispensables à la vie. Au-delà de leur utilité écologique, les cailloux ont une place particulière dans nos cultures. Symbole de durabilité et de persévérance, ils sont souvent utilisés dans l’art et les traditions. Par exemple, les jardins zen japonais mettent en scène des cailloux pour représenter la sérénité et l’équilibre. En explorant les rôles multiples des cailloux, nous découvrons leur contribution essentielle à la nature et leur place unique dans nos vies."
+      }
     ],
       "themes": [
         {

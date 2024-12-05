@@ -71,8 +71,7 @@ nav{
 }
 nav.hidden {
     transform: translateY(-100%); /* Cache la navigation */
-  }
-  
+}
 nav ul{
     display: flex;
     justify-content: space-around;
