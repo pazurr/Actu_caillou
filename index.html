@@ -7,7 +7,7 @@
    <link rel="stylesheet" href="style.css">
    <link rel="shortcut icon" href="image/k5b93301 (1).svg">
 </head>
-<body>
+<body class="">
    <!-- Début HTML -->
    <nav>
       <ul>
@@ -26,16 +26,17 @@
       </ul>
    </nav>
    <main>
+      <div class="remove" id="blur"></div>
       <div class="detruire" id="articleComplet">
          <img src="" alt="" id="imgArticle">
         <div>
             <div>
-               <button class="btnDestroi">X</button>
+               <button class="button primary btnDestroi">X</button>
                <h1 id="titreArticle"></h1>
             </div>
               <h2 id="titre2Article"></h2>
               <p id="texteArticle"></p>
-            </div>
+         </div>
       </div>
       <header id="heroBaner">
          <div class="titles">
@@ -51,7 +52,7 @@
             <h1 id="titleRecent"></h1>
             <h2 id="themeDateRecent"></h2>
             <p id="texteRecent"></p>
-            <a class="button primary" href="#">Lire l'article</a>
+            <a class="button primary" id="btnR">Lire l'article</a>
          </div>
       </article>
       <section id="autreArticles">
@@ -67,7 +68,7 @@
    </main>
    <footer>
       <p id="titreFotter"></p>
-   </footer>   
+   </footer>
    <!-- Fin HTML -->
    <script src="script.js"></script>
 </body>

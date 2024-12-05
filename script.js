@@ -16,47 +16,75 @@ function getData() {
         article(data);
         auteurs(data);
 
-        let detruire = document.querySelector('.detruire')
+        let detruire = document.querySelector('.detruire');
+        let blur = document.getElementById('blur');
+        let btnR = document.getElementById('btnR')
 
-        detruire.addEventListener("click",destroy);
+
+        btnR.addEventListener("click", () => afficherR(data,blur))
+
+
+        detruire.addEventListener("click",() => destroy(blur));
 
         for (let i = 0; i < data.magazine.article.length; i++) {
           let btnACTu = document.getElementById(`${i}`);
 
           btnACTu.addEventListener("click", function() {
-              afficher(i);  
+                  afficher(i);  
+
+              window.history.pushState({}, '', `?id=${i}`);
           });
         }
-        function afficher(index) {
-        let articleComplet = document.getElementById('articleComplet');
-        let imgArticle = document.getElementById('imgArticle');
-        let titreArticle = document.getElementById('titreArticle');
-        let titre2Article = document.getElementById('titre2Article');
-        let texteArticle = document.getElementById('texteArticle');
-        
-        let article = data.magazine.article[index];
-        let titleACTU = article.titre;
-        let dateACTU = article.date;
-        let themeACTU = article.theme;
-        let imageACTU = article.image;
-        let longue_description = article.longue_description;
 
-        imgArticle.src = imageACTU;
-        titreArticle.textContent = titleACTU;
-        titre2Article.textContent = `${themeACTU} - ${dateACTU}`;
-        texteArticle.textContent = longue_description;
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has("id") && urlParams.get("id") === "articlePrincipal") {
+          afficherR(data, blur);  // Affiche l'article principal si l'ID est 'articlePrincipal'
+      } else if (urlParams.has("id")) {
+          const articleId = parseInt(urlParams.get("id"), 10);
+          if (!isNaN(articleId) && articleId >= 0 && articleId < data.magazine.article.length) {
+              afficher(articleId); 
+          } else {
+              console.warn("ID d'article invalide ou inexistant.");
+          }
+      }
 
-        articleComplet.classList.add('articleComplet');
-        articleComplet.classList.remove('destroi');
-        }
-        /// FIN DU CODE
-    })
-      .catch((error) => console.error('Erreur lors de la lecture des données :', error));
-  }
+      function afficher(index) {
+          let body = document.querySelector('body')
+          let articleComplet = document.getElementById('articleComplet');
+          let imgArticle = document.getElementById('imgArticle');
+          let titreArticle = document.getElementById('titreArticle');
+          let titre2Article = document.getElementById('titre2Article');
+          let texteArticle = document.getElementById('texteArticle');
+          let article = data.magazine.article[index];
+          let titleACTU = article.titre;
+          let dateACTU = article.date;
+          let themeACTU = article.theme;
+          let imageACTU = article.image;
+          let longue_description = article.longue_description;
+          
+          imgArticle.src = imageACTU;
+          titreArticle.textContent = titleACTU;
+          titre2Article.textContent = `${themeACTU} - ${dateACTU}`;
+          texteArticle.textContent = longue_description;
+
+          articleComplet.classList.add('articleComplet');
+          articleComplet.classList.remove('destroi');
+
+          body.classList.add('noneScroll')
+
+          blur.classList.add('blur');
+          blur.classList.remove('remove');
+          
+          document.querySelectorAll('.article').forEach(article => {
+            article.classList.add('hidden'); // Ajouter une classe pour masquer les autres
+        });
+      }
+    });
+}
   
-  getData();
+getData();
  
-  ///ON écrit les fonctions ici
+//ON écrit les fonctions ici
 // fonction pour aficher lapage en entier
     function titreDeLaPage(data){
       let titre = document.getElementById('titre')
@@ -118,7 +146,7 @@ function getData() {
               <h1>${titleACTU}</h1>
               <h2>${themeACTU} - ${dateACTU}</h2>
               <p>${petite_description}</p>
-              <a class="button primary" id="${index}" href="#${index}">Lire l'article</a>
+              <a class="button primary" id="${index}">Lire l'article</a>
           </div>
         </div>`;
       
@@ -143,103 +171,51 @@ function getData() {
     }
 // fuction pour aficher et afaccer lew article
 
-  function destroy(){
+  function destroy(blur){
+    let body = document.querySelector('body')
+    body.classList.remove('noneScroll') 
+
     articleComplet.classList.add('destroi');
     articleComplet.classList.remove('articleComplet');
-  }
-  
-    function aficher1(data){
-    let articleComplet = document.getElementById('articleComplet')
-    let titleACTU = data.magazine.article[1].titre;
-    let dateACTU = data.magazine.article[1].date;
-    let themeACTU = data.magazine.article[1].theme;
-    let imageACTU = data.magazine.article[1].image;
-    let longue_description = data.magazine.article[1].longue_description;
 
-    let imgArticle = document.getElementById('imgArticle')
-    let titreArticle = document.getElementById('titreArticle')
-    let titre2Article = document.getElementById('titre2Article')
-    let texteArticle = document.getElementById('texteArticle')
+    blur.classList.add('remove');
+    blur.classList.remove('blur');
 
-
-    imgArticle.src = `${imageACTU}`
-    titreArticle.textContent = `${titleACTU}`
-    titre2Article.textContent = `${themeACTU} - ${dateACTU}`
-    texteArticle.textContent = `${longue_description}`
-
-
-    articleComplet.classList.add('articleComplet')
-    articleComplet.classList.remove('destroi');
-  }
-  function aficher2(data){
-    let articleComplet = document.getElementById('articleComplet')
-    let titleACTU = data.magazine.article[2].titre;
-    let dateACTU = data.magazine.article[2].date;
-    let themeACTU = data.magazine.article[2].theme;
-    let imageACTU = data.magazine.article[2].image;
-    let longue_description = data.magazine.article[2].longue_description;
-
-    let imgArticle = document.getElementById('imgArticle')
-    let titreArticle = document.getElementById('titreArticle')
-    let titre2Article = document.getElementById('titre2Article')
-    let texteArticle = document.getElementById('texteArticle')
-
-
-    imgArticle.src = `${imageACTU}`
-    titreArticle.textContent = `${titleACTU}`
-    titre2Article.textContent = `${themeACTU} - ${dateACTU}`
-    texteArticle.textContent = `${longue_description}`
-
-
-    articleComplet.classList.add('articleComplet')
-    articleComplet.classList.remove('destroi');
-  }
-  function aficher3(data){
-    let articleComplet = document.getElementById('articleComplet')
-    let titleACTU = data.magazine.article[3].titre;
-    let dateACTU = data.magazine.article[3].date;
-    let themeACTU = data.magazine.article[3].theme;
-    let imageACTU = data.magazine.article[3].image;
-    let longue_description = data.magazine.article[3].longue_description;
-
-    let imgArticle = document.getElementById('imgArticle')
-    let titreArticle = document.getElementById('titreArticle')
-    let titre2Article = document.getElementById('titre2Article')
-    let texteArticle = document.getElementById('texteArticle')
-
-
-    imgArticle.src = `${imageACTU}`
-    titreArticle.textContent = `${titleACTU}`
-    titre2Article.textContent = `${themeACTU} - ${dateACTU}`
-    texteArticle.textContent = `${longue_description}`
-
-
-    articleComplet.classList.add('articleComplet')
-    articleComplet.classList.remove('destroi');
-  }
-  function aficher4(data){
-    let articleComplet = document.getElementById('articleComplet')
-    let titleACTU = data.magazine.article[4].titre;
-    let dateACTU = data.magazine.article[4].date;
-    let themeACTU = data.magazine.article[4].theme;
-    let imageACTU = data.magazine.article[4].image;
-    let longue_description = data.magazine.article[4].longue_description;
-
-    let imgArticle = document.getElementById('imgArticle')
-    let titreArticle = document.getElementById('titreArticle')
-    let titre2Article = document.getElementById('titre2Article')
-    let texteArticle = document.getElementById('texteArticle')
-
-
-    imgArticle.src = `${imageACTU}`
-    titreArticle.textContent = `${titleACTU}`
-    titre2Article.textContent = `${themeACTU} - ${dateACTU}`
-    texteArticle.textContent = `${longue_description}`
-
-
-    articleComplet.classList.add('articleComplet')
-    articleComplet.classList.remove('destroi');
+    window.history.pushState({}, '', `?id=`);
   }
 
+  function afficherR(data,blur){
+        let body = document.querySelector('body')
+        let articleComplet = document.getElementById('articleComplet');
+        let imgArticle = document.getElementById('imgArticle');
+        let titreArticle = document.getElementById('titreArticle');
+        let titre2Article = document.getElementById('titre2Article');
+        let texteArticle = document.getElementById('texteArticle');
+         
+        
+        let article = data.magazine.articlePrincipal;
+        let titleACTU = article.titre;
+        let dateACTU = article.date;
+        let themeACTU = article.theme;
+        let imageACTU = article.image;
+        let longue_description = article.longue_description;
+
+
+        imgArticle.src = imageACTU;
+        titreArticle.textContent = titleACTU;
+        titre2Article.textContent = `${themeACTU} - ${dateACTU}`;
+        texteArticle.textContent = longue_description;
+
+        articleComplet.classList.add('articleComplet');
+        articleComplet.classList.remove('destroi');
+
+        body.classList.add('noneScroll')
+
+        blur.classList.add('blur');
+        blur.classList.remove('remove');
+
+
+        window.history.pushState({}, '', `?id=articlePrincipal`);
+  }
 
 
